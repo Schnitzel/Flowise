@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: .lagoon.dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - flowise_data:/storage/
+    environment:
+      - FLOWISE_USERNAME=admin
+      - FLOWISE_PASSWORD=admin
+    labels:
+      lagoon.type: node-persistent
+      lagoon.persistent: /storage
+
+volumes:
+  flowise_data:
